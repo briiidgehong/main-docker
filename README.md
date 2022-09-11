@@ -1,5 +1,8 @@
 # docker-k8s
 
+## main concept
+- 동일한 이미지에 기반한 다수의 컨테이너가 완전히 격리된 환경을 가지는 것
+
 ## docker volume concept
   ![image.jpg1](https://user-images.githubusercontent.com/73451727/188522927-03baca1a-93d3-45d4-a6b0-c3fd7dc10083.png) |![image.jpg2](https://user-images.githubusercontent.com/73451727/189511780-b505af93-d771-42c9-a7fb-3687d984ff83.png)
 --- | --- | 

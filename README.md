@@ -4,11 +4,11 @@
   ![image.jpg1](https://user-images.githubusercontent.com/73451727/188522927-03baca1a-93d3-45d4-a6b0-c3fd7dc10083.png) |![image.jpg2](https://user-images.githubusercontent.com/73451727/189511780-b505af93-d771-42c9-a7fb-3687d984ff83.png)
 --- | --- | 
 
-- application: read only
+- application: in image / read only
   
-- temporary app data: read + write in container
+- temporary app data: in container / read + write / 컨테이너 삭제시 같이 삭제됨
   
-- permanent app data: read + write in container and volume
+- permanent app data: in container and volume / read + write / 컨테이너가 삭제되어도 보존 가능
 
 
 ```

@@ -73,6 +73,7 @@ docker run -d -p 3000:80 --name feedback-app
 -v feedback:/app/feedback # named_volume
 -v ${pwd}:/app:ro # bind mount # read only - 컨테이너가 마운트된 로컬 데이터를 변경하지 못하도록, 읽어갈수만 있도록 강제함
 # -v /app/node_modules # file locking, 덮어쓰지 않도록 잠근다.
+# -v /app/temp # bind mount 되어진 /app경로가 ro 인대, /app/temp 경로는 쓰기도 필요하므로 익명볼륨 설정
 feedback-app # image name
 
 ```

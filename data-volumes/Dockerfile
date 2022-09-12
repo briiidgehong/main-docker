@@ -8,8 +8,10 @@ RUN npm install
 
 COPY . .
 
+# build-time ARGuments
 ARG DEFAULT_PORT=80
 
+# run-time ENVironment
 ENV PORT $DEFAULT_PORT
 
 EXPOSE $PORT

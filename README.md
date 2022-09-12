@@ -83,5 +83,8 @@ feedback-app # image name
     - 서버에 배포시에는 이 스냅샷을 쓰게되므로, 바인드마운트를 할 필요가 굳이 없다.
     - 반면에 개발환경에서는 실시간 변경사항을 컨테이너에 반영할 필요가 있으므로, 바인드마운트 를 사용한다.
 
+- env
+  - docker run -d -p 3000:8000 --env PORT=8000
+  - docker run -d -p 3000:8000 --env-file .env
 
 

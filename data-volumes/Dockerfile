@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 
-# build-time ARGuments
+# build-time ARGuments # can use only dockerfile inside
 ARG DEFAULT_PORT=80
 
 # run-time ENVironment

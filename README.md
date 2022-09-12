@@ -1,7 +1,21 @@
 # docker-k8s
 
+## main concept
+- 동일한 이미지에 기반한 다수의 컨테이너가 완전히 격리된 환경을 가지는 것
+
 ## docker volume concept
-<img width="939" alt="스크린샷 2022-09-06 오전 9 16 09" src="https://user-images.githubusercontent.com/73451727/188522927-03baca1a-93d3-45d4-a6b0-c3fd7dc10083.png">
-- application: read only
-- temporary app data: read + write in container
-- permanent app data: read + write in container and volume
+  ![image.jpg1](https://user-images.githubusercontent.com/73451727/188522927-03baca1a-93d3-45d4-a6b0-c3fd7dc10083.png) |![image.jpg2](https://user-images.githubusercontent.com/73451727/189511780-b505af93-d771-42c9-a7fb-3687d984ff83.png)
+--- | --- | 
+
+- application: in image / read only
+  
+- temporary app data: in container / read + write / 컨테이너 삭제시 같이 삭제됨
+  
+- permanent app data: in container and volume / read + write / 컨테이너가 삭제되어도 보존 가능
+
+
+```
+# data-volumes-02-added-dockerfile
+docker build . -t docker-volume-test-01
+docker run -d -p 3000:80 --rm docker0-volume-test-01
+```

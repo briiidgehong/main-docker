@@ -60,6 +60,21 @@ docker run -d -p 3000:80 -v app/feedback
 docker run -d -p 3000:80 -v feedback:app/feedback
 docker run -d -p 3000:80 -v ${pwd}:/app/feedback
 
+
+# docker run 시점에서, bind mount를 시행하면 Dockerfile에서 
+# COPY package.json .
+# RUN npm install
+# COPY . . 
+# 했던 모든 파일들이 날아가고 로컬파일로 덮어씌워지게된다. (로컬 -> 컨테이너 방향)
+# 특정 파일을 잠그려면, 더 구체적인 경로의 볼륨을 설정해주면 된다. (도커에서 판단할때, /app보다 /app/module 볼륨의 우선순위가 더 높다.)
+# VOLUME ["app/node_modules"] or -v /app/node_modules
+
+docker run -d -p 3000:80 --name feedback-app 
+-v feedback:/app/feedback # named_volume
+-v ${pwd}:/app # bind mount
+# -v /app/node_modules # file locking, 덮어쓰지 않도록 잠근다.
+feedback-app # image name
+
 ```
 
 

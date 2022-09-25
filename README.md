@@ -113,4 +113,8 @@ feedback-app # image name
     - docker container inspect 
     - ipaddress 따서 localhost 대신에 연결시켜줌 
 	  - 하드코딩 / 매번 바뀌기때문에 일반적인 방식은 아님
+	  
+## multiple container application (nodejs + react + mongodb)
+<img width="885" alt="스크린샷 2022-09-25 오후 2 48 17" src="https://user-images.githubusercontent.com/73451727/192130265-535f14ee-89d1-4277-a0c6-2de1b8ca1726.png">
+
 

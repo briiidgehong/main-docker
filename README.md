@@ -88,4 +88,29 @@ feedback-app # image name
   - docker run -d -p 3000:8000 --env-file .env
   - docker build -t feedback-app --build-arg DEFAULT_PORT=8000 .
 
+## docker networks
+<img width="893" alt="스크린샷 2022-09-25 오후 2 25 44" src="https://user-images.githubusercontent.com/73451727/192129668-618e5558-1bbc-4079-8b3b-35a7cf6cdd4b.png">
+
+
+- 방식 1. 컨테이너 내부에서 외부 인터넷과의 통신 (like www - api call)
+	- 특별한 조작 없이 잘 통신됨
+- 방식2. 컨테이너 내부에서 호스트 머신의 서비스와의 통신 (like db)
+	- 도커가 인식할수 있는 특수도메인 필요 - localhost -> host.docker.internal 로 변경해야함
+  - 도커가 자동변환 fetch(host.docker.internal).then(host machine ip)
+
+- 방식3. 컨테이너와 컨테이너와의 통신(다중 컨테이너)
+  - 1) 일반적인 방식 - 컨테이너 네트워크 
+    - 도커가 인식할수 있는 특수도메인 필요(컨테이너 이름을 도메인으로 사용 가능) + 같은 도커 네트워크
+		- 도커가 자동변환 fetch(container name:port/blabla).then(container ip)
+
+    ```
+		- docker network create my_net_1
+		- docker network ls
+		- docker run -d —name mongodb —network my_net_1
+    ```
+    
+  - 2) 부가적인 방식 - IP 강제 맵핑
+    - docker container inspect 
+    - ipaddress 따서 localhost 대신에 연결시켜줌 
+	  - 하드코딩 / 매번 바뀌기때문에 일반적인 방식은 아님
 

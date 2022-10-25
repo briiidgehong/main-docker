@@ -117,4 +117,13 @@ feedback-app # image name
 ## multiple container application (nodejs + react + mongodb)
 <img width="885" alt="스크린샷 2022-09-25 오후 2 48 17" src="https://user-images.githubusercontent.com/73451727/192130265-535f14ee-89d1-4277-a0c6-2de1b8ca1726.png">
 
+## DOCKER 컨테이너 배포하기 <br/>
+- 개발 환경에서는 바인드마운트를 사용함 <br/>
+실시간으로 수정되는 소스코드를 컨테이너에 반영할 필요가 있기때문에 <br/>
+- 운영 환경에서는 바인드마운트를 사용하지않음 <br/>
+그냥 COPY만 일어날 뿐임, 변경시에는 컨테이너를 새로 올림 <br/>
+- DOCKERFILE 자체는 개발과 운영이 동일함 <br/>
+  dockerfile에 바인드마운트를 하게되면 개발환경과 운영환경이 달라지므로 volume 설정이 docker run process에 존재하는 이유임 <br/>
+- 이렇게 하면, 컨테이너를 실행하는 위치에 관계없이 동일해짐 <br/>
+
 

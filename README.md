@@ -126,4 +126,20 @@ feedback-app # image name
   dockerfile에 바인드마운트를 하게되면 개발환경과 운영환경이 달라지므로 volume 설정이 docker run process에 존재하는 이유임 <br/>
 - 이렇게 하면, 컨테이너를 실행하는 위치에 관계없이 동일해짐 <br/>
 
+## ECS 배포
+- docker-compose 는 로컬환경에서 사용하기 좋지만, production 환경에서 사용하기는 부적합함 <br/>
+- docker-compose의 장점인, 여러개 컨테이너를 묶는 도커 네트워크 또한 사용하기 어려워짐 <br/>
+- 그러나, aws ecs의 경우 동일한 테스크에 컨테이너를 추가하면 하나의 호스트 머신에 같이 올라감 <br/>
+- 도커 네트워크 구성은 x / 단지 localhost를 사용할 수 있게 해줌 / mongodb:27017 -> localhost:27017 로 변경 <br/>
+- 로컬환경 에서의 변수와 실제 배포시의 변수가 mongodb vs localhost <br/>
+- ecr container 추가시에 variables를 추가로 설정한다 <br/>
+- MONGODB_URL = localhost <br/>
+- 도커화된 앱을 배포할 때는, 도커 네트워크를 사용할 수 없음(즉, 컨테이너 이름 자체로 다른 컨테이너에 접근하는것이 불가능해짐) <br/>
+<br/>
+
+- local에서처럼 db 볼륨을 이용하는 방법 -> EFS (elastic file system) <br/>
+- 보안그룹설정 및 container edit -> storage 설정 필요 <br/>
+- 롤링 배포시, 현재 컨테이너와 배포하려는 컨테이너가 동시에 EFS 접근하여 충돌함 - RDS와 같은 관리형 DB를 쓰자. <br/>
+<br/>
+
 
